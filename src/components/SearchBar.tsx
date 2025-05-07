@@ -29,7 +29,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         relative rounded-lg shadow-subtle backdrop-blur-sm border
         ${
           isFocused
-            ? "border-primary/30 shadow-[0_0_0_1px_rgba(4,166,194,0.2)] bg-white/95"
+            ? "border-accent/30 shadow-[0_0_0_1px_rgba(20,184,177,0.2)] bg-white/95"
             : "border-border bg-white/90"
         }
         transition-shadow transition-colors duration-200 ease-out
@@ -38,7 +38,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
           <Search
             className={`h-5 w-5 ${
-              isFocused ? "text-primary" : "text-muted-foreground"
+              isFocused ? "text-accent" : "text-muted-foreground"
             } transition-colors duration-200`}
           />
         </div>
@@ -65,8 +65,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
         )}
       </div>
 
-      {/* More subtle decorative element */}
-      <div className="absolute -z-10 inset-0 bg-gradient-radial from-primary/3 to-transparent blur-xl rounded-full"></div>
+      {/* Accent color highlight effect */}
+      <div className="absolute -z-10 inset-0 bg-accent/5 blur-xl rounded-full"></div>
     </motion.div>
   );
 };

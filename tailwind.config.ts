@@ -49,7 +49,6 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        // Add new secondary accent color
         "secondary-accent": {
           DEFAULT: "hsl(var(--secondary-accent))",
           foreground: "hsl(var(--secondary-accent-foreground))",
@@ -79,15 +78,17 @@ export default {
           dark: "#6E59A5",
           darker: "#4e3985",
         },
-        // Updated gradient colors for better harmony
-        gradient: {
-          start: "#04A6C2", // Turquoise to match our new primary
-          mid: "#5D62B5", // Mid purple-blue
-          end: "#7E69AB", // Our prompt-purple
+        // Replacing gradient colors with teal palette
+        teal: {
+          lighter: "#99E6E4",
+          light: "#4DD8D2",
+          DEFAULT: "#14B8B1",
+          dark: "#0E8C87",
+          darker: "#095F5C",
         },
         "accent-gold": {
           light: "#F7E9C3",
-          DEFAULT: "#D4AF37", // Classic gold
+          DEFAULT: "#D4AF37",
           dark: "#A38728",
         },
         "accent-mint": {
@@ -100,12 +101,6 @@ export default {
           DEFAULT: "#FF6B6B",
           dark: "#E53E3E",
         },
-        // Add warm orange to match our secondary accent
-        "accent-orange": {
-          light: "#FFDFBF",
-          DEFAULT: "hsl(var(--secondary-accent))",
-          dark: "#E67E22",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -113,12 +108,12 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        // Refined box shadows for a lighter, more modern feel
+        // Refined box shadows
         elegant: "0 2px 10px rgba(0, 0, 0, 0.05)",
         "card-hover": "0 10px 25px rgba(0, 0, 0, 0.08)",
         subtle: "0 1px 3px rgba(0, 0, 0, 0.04)",
-        // Softer glow effect for focus states
-        glow: "0 0 10px rgba(4, 166, 194, 0.35)",
+        // Teal glow for focus states
+        glow: "0 0 10px rgba(20, 184, 177, 0.35)",
       },
       keyframes: {
         "accordion-down": {

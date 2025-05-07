@@ -12,10 +12,10 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="py-6 bg-gradient-diagonal from-gradient-start via-gradient-mid to-gradient-end relative">
+    <header className="py-6 bg-accent relative">
       {/* Decorative elements with softer noise pattern */}
       <div className="absolute inset-0 opacity-8 bg-noise-pattern mix-blend-overlay pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-accent-foreground/20"></div>
 
       <div className="container max-w-6xl mx-auto px-4">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
           >
             <a
               href="#features"
-              className="text-white/90 hover:text-white flex items-center gap-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-primary/50 rounded-md px-2 py-1"
+              className="text-white/90 hover:text-white flex items-center gap-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-accent/50 rounded-md px-2 py-1"
               aria-label="View documentation"
             >
               <BookOpen className="h-4 w-4" />
@@ -60,7 +60,7 @@ const Header: React.FC = () => {
               href="https://github.com/yourusername/prompt-stash"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 hover:bg-white/20 text-white p-2.5 rounded-full transition-all flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-primary/50"
+              className="bg-white/10 hover:bg-white/20 text-white p-2.5 rounded-full transition-all flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-accent/50"
               aria-label="View GitHub repository"
             >
               <Github className="h-5 w-5" />

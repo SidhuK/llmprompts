@@ -65,19 +65,13 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
 
   return (
     <motion.div
-      className="prompt-card group"
+      className="prompt-card group accent-border"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Decorative background elements with softer gradient */}
-      <div className="absolute inset-0 bg-gradient-radial from-white via-white to-transparent opacity-30 rounded-xl"></div>
-      {isHovered && (
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-xl transition-opacity duration-300"></div>
-      )}
-
       {/* Card content */}
       <div className="relative z-10">
         <div className="flex justify-between items-start mb-4">
@@ -85,14 +79,14 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
             <span className="mr-2 text-lg" aria-hidden="true">
               {platformEmoji}
             </span>
-            <h3 className="text-lg font-medium group-hover:text-primary transition-colors duration-200">
+            <h3 className="text-lg font-medium group-hover:text-accent transition-colors duration-200">
               {safePrompt.title}
             </h3>
           </div>
           <motion.button
             onClick={copyToClipboard}
             className={`text-white rounded-md p-1.5 focus-ring ${
-              copied ? "bg-green-500" : "bg-primary hover:bg-primary/90"
+              copied ? "bg-green-500" : "bg-accent hover:bg-accent/90"
             }`}
             aria-label={
               copied ? "Copied to clipboard" : "Copy prompt to clipboard"
@@ -122,7 +116,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
           {safePrompt.content.length > 150 && (
             <button
               onClick={() => setExpanded(!expanded)}
-              className="text-xs text-primary hover:text-primary/80 hover:underline flex items-center"
+              className="text-xs text-accent hover:text-accent/80 hover:underline flex items-center"
               aria-label={expanded ? "Show less content" : "Show more content"}
             >
               {expanded ? "Show less" : "Show more"}
@@ -137,7 +131,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
 
         <div className="flex flex-wrap gap-2 mt-auto">
           <span
-            className="prompt-tag bg-secondary-accent/20 text-secondary-accent-foreground flex items-center"
+            className="prompt-tag bg-teal-lighter/30 text-teal-dark flex items-center"
             title={`Platform: ${displayPlatform}`}
           >
             <span className="mr-1" aria-hidden="true">
@@ -146,7 +140,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
             {displayPlatform}
           </span>
           <span
-            className="prompt-tag bg-primary/15 text-primary-foreground flex items-center"
+            className="prompt-tag bg-accent/15 text-accent-foreground flex items-center"
             title={`Category: ${displayCategory}`}
           >
             <span className="mr-1" aria-hidden="true">
@@ -159,20 +153,19 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
               key={`${safePrompt.id}-tag-${tagIndex}`}
               className="prompt-tag bg-secondary/80 text-secondary-foreground flex items-center"
             >
-              <span className="text-primary mr-0.5">#</span>
+              <span className="text-accent mr-0.5">#</span>
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Refined highlight effect with subtle border glow */}
-        <div
-          className={`absolute inset-0 rounded-xl transition-opacity duration-300 pointer-events-none ${
-            isHovered
-              ? "opacity-100 shadow-[0_0_0_1px_rgba(4,166,194,0.3)]"
-              : "opacity-0"
-          }`}
-        ></div>
+        {/* Accent border highlight on hover */}
+        {isHovered && (
+          <div
+            className="absolute inset-0 rounded-xl transition-opacity duration-300 pointer-events-none border-2 border-accent/20"
+            aria-hidden="true"
+          ></div>
+        )}
       </div>
     </motion.div>
   );

@@ -17,8 +17,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 260 10% 10%;
 
-    /* Updated to a vibrant turquoise */
-    --primary: 175 45% 42%;
+    /* Teal as the primary accent color */
+    --primary: 175 70% 41%;
     --primary-foreground: 260 10% 98%;
 
     --secondary: 260 20% 96%;
@@ -28,19 +28,20 @@
     /* Improved contrast ratio for better accessibility */
     --muted-foreground: 260 10% 35%;
 
-    --accent: 260 45% 96%;
-    --accent-foreground: 260 10% 10%;
+    /* Teal as the accent color */
+    --accent: 175 70% 41%;
+    --accent-foreground: 260 10% 98%;
 
-    /* New secondary accent color (warm orange) */
-    --secondary-accent: 30 95% 60%;
-    --secondary-accent-foreground: 0 0% 98%;
+    /* Keeping a neutral secondary accent */
+    --secondary-accent: 210 40% 96%;
+    --secondary-accent-foreground: 260 10% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 260 20% 90%;
     --input: 260 20% 90%;
-    --ring: 175 45% 42%;
+    --ring: 175 70% 41%;
 
     --radius: 0.6rem;
   }
@@ -55,8 +56,8 @@
     --popover: 260 10% 10%;
     --popover-foreground: 260 10% 90%;
 
-    /* Updated to match light mode turquoise but slightly brighter for dark mode */
-    --primary: 175 45% 50%;
+    /* Teal as the primary accent color for dark mode */
+    --primary: 175 70% 45%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 260 10% 15%;
@@ -66,11 +67,12 @@
     /* Improved contrast ratio for dark mode */
     --muted-foreground: 260 10% 75%;
 
-    --accent: 260 10% 15%;
+    /* Teal as the accent color for dark mode */
+    --accent: 175 70% 45%;
     --accent-foreground: 0 0% 98%;
 
-    /* New secondary accent color for dark mode */
-    --secondary-accent: 30 95% 55%;
+    /* Neutral secondary accent for dark mode */
+    --secondary-accent: 210 40% 20%;
     --secondary-accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -78,7 +80,7 @@
 
     --border: 260 10% 20%;
     --input: 260 10% 20%;
-    --ring: 175 45% 50%;
+    --ring: 175 70% 45%;
   }
 }
 
@@ -113,8 +115,8 @@
 }
 
 @layer components {
-  .gradient-heading {
-    @apply bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end bg-clip-text text-transparent;
+  .accent-heading {
+    @apply text-accent;
   }
 
   .prompt-card {
@@ -138,27 +140,25 @@
     @apply border border-slate-200/60;
   }
 
-  .gradient-border {
-    @apply relative before:absolute before:inset-0 before:p-[1px] before:rounded-[inherit] 
-    before:bg-gradient-to-r before:from-gradient-start before:to-gradient-end 
-    before:opacity-30 before:-z-10;
+  .accent-border {
+    @apply border border-accent/20;
   }
 
-  /* New premium badge style for hero section */
+  /* New premium badge style with teal accent */
   .premium-badge {
     @apply relative inline-flex items-center px-3 py-1 text-xs font-medium rounded-full
-    bg-gradient-to-r from-gradient-start to-gradient-end text-white shadow-subtle;
+    bg-accent text-white shadow-subtle;
   }
 
   /* Enhanced link styling */
   .text-link {
-    @apply text-primary hover:text-primary/80 hover:underline focus-visible:outline-none 
-    focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary transition-colors;
+    @apply text-accent hover:text-accent/80 hover:underline focus-visible:outline-none 
+    focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors;
   }
 
   /* Consistent focus ring styling */
   .focus-ring {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary 
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent 
     focus-visible:ring-offset-2 transition-shadow duration-200;
   }
 

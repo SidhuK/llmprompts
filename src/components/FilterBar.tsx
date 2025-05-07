@@ -88,7 +88,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
               id="platform-filter"
               className="select-custom w-full appearance-none rounded-md border border-input
                 bg-background/70 py-2.5 pl-4 pr-10 text-sm transition-colors
-                hover:border-primary/30 focus:border-primary/30"
+                hover:border-accent/30 focus:border-accent/30"
               value={selectedPlatform}
               onChange={(e) =>
                 setSelectedPlatform(e.target.value as AIPlatform | "all")
@@ -112,12 +112,12 @@ const FilterBar: React.FC<FilterBarProps> = ({
             </div>
           </div>
 
-          {/* Selected Badge Indicator - with improved styling */}
+          {/* Selected Badge Indicator - with teal styling */}
           {selectedPlatform !== "all" && (
             <div className="mt-2 flex">
               <span
-                className="inline-flex items-center gap-1 rounded-full bg-secondary-accent/15 
-                px-2.5 py-1 text-xs font-medium text-secondary-accent-foreground border border-secondary-accent/10"
+                className="inline-flex items-center gap-1 rounded-full bg-teal-lighter/20 
+                px-2.5 py-1 text-xs font-medium text-teal-dark border border-teal-lighter/30"
               >
                 {getPlatformOption(selectedPlatform).icon && (
                   <span className="mr-0.5">
@@ -127,7 +127,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
                 {getPlatformOption(selectedPlatform).label}
                 <button
                   onClick={() => setSelectedPlatform("all")}
-                  className="ml-1.5 rounded-full hover:bg-secondary-accent/10 p-0.5"
+                  className="ml-1.5 rounded-full hover:bg-teal-lighter/20 p-0.5"
                   aria-label="Clear platform filter"
                 >
                   <X className="h-3 w-3" />
@@ -155,7 +155,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
               id="category-filter"
               className="select-custom w-full appearance-none rounded-md border border-input
                 bg-background/70 py-2.5 pl-4 pr-10 text-sm transition-colors
-                hover:border-primary/30 focus:border-primary/30"
+                hover:border-accent/30 focus:border-accent/30"
               value={selectedCategory}
               onChange={(e) =>
                 setSelectedCategory(e.target.value as PromptCategory | "all")
@@ -179,12 +179,12 @@ const FilterBar: React.FC<FilterBarProps> = ({
             </div>
           </div>
 
-          {/* Selected Badge Indicator - with improved styling */}
+          {/* Selected Badge Indicator - with teal styling */}
           {selectedCategory !== "all" && (
             <div className="mt-2 flex">
               <span
-                className="inline-flex items-center gap-1 rounded-full bg-primary/10
-                px-2.5 py-1 text-xs font-medium text-primary border border-primary/10"
+                className="inline-flex items-center gap-1 rounded-full bg-accent/10
+                px-2.5 py-1 text-xs font-medium text-accent-foreground border border-accent/10"
               >
                 {getCategoryOption(selectedCategory).icon && (
                   <span className="mr-0.5">
@@ -194,7 +194,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
                 {getCategoryOption(selectedCategory).label}
                 <button
                   onClick={() => setSelectedCategory("all")}
-                  className="ml-1.5 rounded-full hover:bg-primary/10 p-0.5"
+                  className="ml-1.5 rounded-full hover:bg-accent/10 p-0.5"
                   aria-label="Clear category filter"
                 >
                   <X className="h-3 w-3" />
