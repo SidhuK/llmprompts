@@ -1,4 +1,3 @@
-
 import { Prompt, AIPlatform, PromptCategory } from "../types";
 import { parseCSV } from "../utils/csvParser";
 
@@ -10,45 +9,76 @@ export const getAllPrompts = async (): Promise<Prompt[]> => {
   if (cachedPrompts !== null) {
     return cachedPrompts;
   }
-  
-  console.log('Fetching prompts from CSV...');
-  try {
-    cachedPrompts = await parseCSV('/prompts.csv');
-    console.log('Fetched prompts:', cachedPrompts.length, 'items');
-    console.log('First prompt:', cachedPrompts[0]);
-    return cachedPrompts;
-  } catch (error) {
-    console.error('Error fetching prompts:', error);
-    return [];
+
+  console.log("Fetching prompts from CSV...");
+
+  // Try multiple paths to find the CSV file
+  const possiblePaths = [
+    "./prompts.csv", // Relative path
+    "/prompts.csv", // Root path
+    `${import.meta.env.BASE_URL}prompts.csv`, // Vite base URL
+    `${window.location.origin}/prompts.csv`, // Absolute URL
+  ];
+
+  let lastError = null;
+
+  // Try each path until one works
+  for (const path of possiblePaths) {
+    try {
+      console.log(`Trying to fetch CSV from path: ${path}`);
+      const prompts = await parseCSV(path);
+
+      if (prompts && prompts.length > 0) {
+        console.log(
+          `Successfully loaded ${prompts.length} prompts from ${path}`
+        );
+        console.log("First prompt:", prompts[0]);
+        cachedPrompts = prompts;
+        return prompts;
+      } else {
+        console.log(`No prompts found at ${path}`);
+      }
+    } catch (error) {
+      console.error(`Error fetching prompts from ${path}:`, error);
+      lastError = error;
+    }
   }
+
+  console.error("Failed to load prompts from all paths", lastError);
+  return [];
 };
 
 // Function to search prompts
 export const searchPrompts = async (query: string): Promise<Prompt[]> => {
   const prompts = await getAllPrompts();
   const lowerCaseQuery = query.toLowerCase();
-  
-  return prompts.filter(prompt => 
-    prompt.title.toLowerCase().includes(lowerCaseQuery) || 
-    prompt.content.toLowerCase().includes(lowerCaseQuery) ||
-    prompt.tags?.some(tag => tag.toLowerCase().includes(lowerCaseQuery))
+
+  return prompts.filter(
+    (prompt) =>
+      prompt.title.toLowerCase().includes(lowerCaseQuery) ||
+      prompt.content.toLowerCase().includes(lowerCaseQuery) ||
+      prompt.tags?.some((tag) => tag.toLowerCase().includes(lowerCaseQuery))
   );
 };
 
 // Function to filter prompts by platform
-export const filterPromptsByPlatform = async (platform: AIPlatform | "all"): Promise<Prompt[]> => {
+export const filterPromptsByPlatform = async (
+  platform: AIPlatform | "all"
+): Promise<Prompt[]> => {
   if (platform === "all") return getAllPrompts();
-  
+
   const prompts = await getAllPrompts();
-  return prompts.filter(prompt => prompt.platform === platform);
+  return prompts.filter((prompt) => prompt.platform === platform);
 };
 
 // Function to filter prompts by category
-export const filterPromptsByCategory = async (category: PromptCategory | "all"): Promise<Prompt[]> => {
+export const filterPromptsByCategory = async (
+  category: PromptCategory | "all"
+): Promise<Prompt[]> => {
   if (category === "all") return getAllPrompts();
-  
+
   const prompts = await getAllPrompts();
-  return prompts.filter(prompt => prompt.category === category);
+  return prompts.filter((prompt) => prompt.category === category);
 };
 
 export const getPlatformColor = (platform: AIPlatform): string => {
