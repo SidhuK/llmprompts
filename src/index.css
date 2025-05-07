@@ -17,24 +17,30 @@
     --popover: 0 0% 100%;
     --popover-foreground: 260 10% 10%;
 
-    --primary: 265 45% 55%;
+    /* Updated to a vibrant turquoise */
+    --primary: 175 45% 42%;
     --primary-foreground: 260 10% 98%;
 
     --secondary: 260 20% 96%;
     --secondary-foreground: 260 10% 10%;
 
     --muted: 260 20% 96%;
-    --muted-foreground: 260 10% 40%;
+    /* Improved contrast ratio for better accessibility */
+    --muted-foreground: 260 10% 35%;
 
     --accent: 260 45% 96%;
     --accent-foreground: 260 10% 10%;
+
+    /* New secondary accent color (warm orange) */
+    --secondary-accent: 30 95% 60%;
+    --secondary-accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 260 20% 90%;
     --input: 260 20% 90%;
-    --ring: 260 45% 55%;
+    --ring: 175 45% 42%;
 
     --radius: 0.6rem;
   }
@@ -49,24 +55,30 @@
     --popover: 260 10% 10%;
     --popover-foreground: 260 10% 90%;
 
-    --primary: 260 45% 55%;
+    /* Updated to match light mode turquoise but slightly brighter for dark mode */
+    --primary: 175 45% 50%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 260 10% 15%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 260 10% 15%;
-    --muted-foreground: 260 10% 70%;
+    /* Improved contrast ratio for dark mode */
+    --muted-foreground: 260 10% 75%;
 
     --accent: 260 10% 15%;
     --accent-foreground: 0 0% 98%;
+
+    /* New secondary accent color for dark mode */
+    --secondary-accent: 30 95% 55%;
+    --secondary-accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 260 10% 20%;
     --input: 260 10% 20%;
-    --ring: 260 45% 55%;
+    --ring: 175 45% 50%;
   }
 }
 
@@ -78,14 +90,20 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     background-image: theme("backgroundImage.noise-pattern");
+    /* Increased font size for better readability */
+    font-size: 16px;
   }
 
-  h1,
+  /* More selective use of Cal Sans for high-impact headings */
+  h1 {
+    @apply font-display tracking-tight;
+  }
+
   h2,
   h3,
   h4,
   h5 {
-    @apply font-display tracking-tight;
+    @apply tracking-tight;
   }
 
   code,
@@ -100,11 +118,16 @@
   }
 
   .prompt-card {
-    @apply relative overflow-hidden rounded-xl border p-6 shadow-elegant backdrop-blur-sm bg-white/90 transition-all hover:shadow-card-hover;
+    @apply relative overflow-hidden rounded-xl border p-7 shadow-elegant backdrop-blur-sm bg-white/90
+    /* Use specific transition properties instead of transition-all for better performance */
+    transition-opacity transition-shadow transition-transform duration-300
+    hover:shadow-card-hover hover:scale-[1.01];
   }
 
   .prompt-tag {
-    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors;
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
+    /* Improved styling for tags */
+    bg-secondary/80 text-secondary-foreground transition-colors hover:bg-secondary;
   }
 
   .glass-effect {
@@ -116,6 +139,39 @@
   }
 
   .gradient-border {
-    @apply relative before:absolute before:inset-0 before:p-[1px] before:rounded-[inherit] before:bg-gradient-to-r before:from-gradient-start before:to-gradient-end before:opacity-30 before:-z-10;
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:rounded-[inherit] 
+    before:bg-gradient-to-r before:from-gradient-start before:to-gradient-end 
+    before:opacity-30 before:-z-10;
+  }
+
+  /* New premium badge style for hero section */
+  .premium-badge {
+    @apply relative inline-flex items-center px-3 py-1 text-xs font-medium rounded-full
+    bg-gradient-to-r from-gradient-start to-gradient-end text-white shadow-subtle;
+  }
+
+  /* Enhanced link styling */
+  .text-link {
+    @apply text-primary hover:text-primary/80 hover:underline focus-visible:outline-none 
+    focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary transition-colors;
+  }
+
+  /* Consistent focus ring styling */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary 
+    focus-visible:ring-offset-2 transition-shadow duration-200;
+  }
+
+  /* Custom select dropdown styling */
+  .select-custom {
+    @apply rounded-md border border-input bg-background px-3 py-2 text-sm 
+    ring-offset-background placeholder:text-muted-foreground focus:outline-none 
+    focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  /* Staggered animation for cards */
+  .stagger-fade-in {
+    @apply opacity-0;
+    animation: fade-in 0.5s ease-out forwards;
   }
 }
