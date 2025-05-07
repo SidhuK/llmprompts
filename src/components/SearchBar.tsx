@@ -18,7 +18,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto mb-6">
+    <div className="w-full h-full">
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <Search
@@ -30,8 +30,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
         <input
           type="text"
-          className="search-input pl-10"
-          placeholder="Search prompts by keyword, category or platform..."
+          className="search-input pl-10 w-full"
+          placeholder="Search prompts by keyword..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
@@ -50,8 +50,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
         )}
       </div>
 
-      {/* Count of results */}
-      <div className="text-xs text-muted-foreground mt-2 text-center">
+      {/* Count of results - positioned better for side-by-side layout */}
+      <div className="text-xs text-muted-foreground mt-1">
         {searchQuery ? (
           <span>Showing results for "{searchQuery}"</span>
         ) : (

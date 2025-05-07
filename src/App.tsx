@@ -81,30 +81,38 @@ function App() {
       <Header />
 
       <main className="container px-4 py-8 mx-auto w-full max-w-full">
-        {/* Hero section moved to the side */}
-        <div className="flex justify-between items-center mb-8">
-          <div className="max-w-2xl">
-            <h1 className="text-3xl font-bold mb-2 text-foreground">
-              AI Prompt Stash
-            </h1>
-            <p className="text-muted-foreground">
-              Discover and use powerful prompts for ChatGPT, Claude, Grok, and
-              other AI assistants. Find the perfect prompt to get better results
-              from your AI interactions.
-            </p>
-          </div>
+        {/* Hero section at the top */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold mb-2 text-foreground">
+            AI Prompt Stash
+          </h1>
+          <p className="text-muted-foreground">
+            Discover and use powerful prompts for ChatGPT, Claude, Grok, and
+            other AI assistants. Find the perfect prompt to get better results
+            from your AI interactions.
+          </p>
         </div>
 
-        {/* Search */}
-        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        {/* Search and filters section side by side */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          {/* Search bar - takes 1/3 of the width */}
+          <div className="md:col-span-1">
+            <SearchBar
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+          </div>
 
-        {/* Filters */}
-        <FilterBar
-          selectedPlatform={selectedPlatform}
-          setSelectedPlatform={setSelectedPlatform}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
+          {/* Filters - takes 2/3 of the width */}
+          <div className="md:col-span-2">
+            <FilterBar
+              selectedPlatform={selectedPlatform}
+              setSelectedPlatform={setSelectedPlatform}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          </div>
+        </div>
 
         {/* Prompt count */}
         <div className="flex justify-between items-center mb-6">
