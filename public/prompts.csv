@@ -1,0 +1,12 @@
+
+id,title,content,platform,category,tags
+1,"Creative Story Writing","Write a short story about [protagonist] who discovers [unusual object] in their backyard. The story should include elements of [genre] and end with an unexpected twist.",chatgpt,creative,"writing,storytelling"
+2,"Code Refactoring","Refactor this [language] code to be more efficient and follow best practices: [code block]",chatgpt,coding,"programming,optimization"
+3,"Business Email Template","Create a professional email template for [purpose] to send to [recipient type]. The tone should be [tone] and include a call to action about [action].",claude,business,"email,communication"
+4,"Research Paper Summary","Summarize the key findings, methodology, and implications of this research paper: [paper title/abstract]",grok,academic,"research,summary"
+5,"Product Description","Write a compelling product description for [product] targeting [audience]. Highlight its [features] and explain the benefits in an engaging way.",gemini,business,"marketing,copywriting"
+6,"Debugging Help","I'm getting this error in my [language] application: [error message]. Here's the relevant code: [code block]. What might be causing this and how can I fix it?",llama,coding,"debugging,troubleshooting"
+7,"Recipe Creation","Create a recipe for a [dietary restriction] [meal type] using these ingredients: [ingredient list]. Include cooking instructions and approximate preparation time.",chatgpt,personal,"cooking,food"
+8,"Fantasy Character Creation","Create a detailed character profile for a [character type] in a [setting] fantasy world. Include physical appearance, personality traits, special abilities, and backstory.",claude,creative,"characters,fantasy"
+9,"Data Analysis Plan","I have a dataset about [topic] with these columns: [column names]. Suggest a comprehensive analysis plan to extract meaningful insights, including visualization recommendations.",grok,academic,"data,analysis"
+10,"Workout Routine","Create a [intensity level] [duration] workout routine targeting [muscle groups] that can be done [location]. Include sets, reps, and rest periods.",gemini,personal,"fitness,health"
