@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Prompt } from "../types";
-import { Copy, Check, Sparkles, ChevronDown } from "lucide-react";
+import { Copy, Check, ChevronDown, ExternalLink } from "lucide-react";
 import { getPlatformColor, getCategoryColor } from "../data/prompts";
 import { motion } from "framer-motion";
 
@@ -63,108 +63,115 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
       other: "🔍",
     }[safePrompt.category] || "🔍";
 
+  // Add a chat URL function that would open the prompt in a chat
+  const getChatUrl = () => {
+    switch (safePrompt.platform) {
+      case "chatgpt":
+        return `https://chat.openai.com/g/g-8g8MWgJkf-prompt-assistant?prompt=${encodeURIComponent(
+          safePrompt.content
+        )}`;
+      case "claude":
+        return `https://claude.ai/chat/new?prompt=${encodeURIComponent(
+          safePrompt.content
+        )}`;
+      default:
+        return null;
+    }
+  };
+
+  const chatUrl = getChatUrl();
+
   return (
     <motion.div
-      className="prompt-card group accent-border"
-      initial={{ opacity: 0, y: 20 }}
+      className="prompt-card bg-card rounded-lg border shadow-sm hover:shadow-md transition-shadow p-4 h-full flex flex-col"
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
     >
-      {/* Card content */}
-      <div className="relative z-10">
-        <div className="flex justify-between items-start mb-4">
-          <div className="flex items-center">
-            <span className="mr-2 text-lg" aria-hidden="true">
-              {platformEmoji}
-            </span>
-            <h3 className="text-lg font-medium group-hover:text-accent transition-colors duration-200">
-              {safePrompt.title}
-            </h3>
-          </div>
-          <motion.button
-            onClick={copyToClipboard}
-            className={`text-white rounded-md p-1.5 focus-ring ${
-              copied ? "bg-green-500" : "bg-accent hover:bg-accent/90"
-            }`}
-            aria-label={
-              copied ? "Copied to clipboard" : "Copy prompt to clipboard"
-            }
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {copied ? (
-              <Check size={16} className="text-white" />
-            ) : (
-              <Copy size={16} className="text-white" />
-            )}
-          </motion.button>
-        </div>
+      {/* Title */}
+      <div className="flex items-start justify-between mb-2">
+        <h3 className="text-base font-medium text-foreground group-hover:text-accent transition-colors duration-200 truncate">
+          {safePrompt.title}
+        </h3>
 
-        <div className="relative mb-5">
-          {!expanded && (
-            <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white/90 to-transparent pointer-events-none"></div>
+        {/* Copy button */}
+        <button
+          onClick={copyToClipboard}
+          className={`copy-button ml-2 flex-shrink-0 p-1.5 rounded-full ${
+            copied ? "bg-green-500" : "bg-accent hover:bg-accent/80"
+          } transition-colors`}
+          aria-label={
+            copied ? "Copied to clipboard" : "Copy prompt to clipboard"
+          }
+        >
+          {copied ? (
+            <Check size={12} className="text-white" />
+          ) : (
+            <Copy size={12} className="text-white" />
           )}
-          <p
-            className={`text-muted-foreground text-sm mb-4 leading-relaxed ${
-              expanded ? "" : "line-clamp-3"
-            }`}
-          >
-            {safePrompt.content}
-          </p>
-          {safePrompt.content.length > 150 && (
-            <button
-              onClick={() => setExpanded(!expanded)}
-              className="text-xs text-accent hover:text-accent/80 hover:underline flex items-center"
-              aria-label={expanded ? "Show less content" : "Show more content"}
-            >
-              {expanded ? "Show less" : "Show more"}
-              <ChevronDown
-                className={`ml-1 h-3 w-3 transition-transform duration-200 ${
-                  expanded ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-          )}
-        </div>
+        </button>
+      </div>
 
-        <div className="flex flex-wrap gap-2 mt-auto">
-          <span
-            className="prompt-tag bg-teal-lighter/30 text-teal-dark flex items-center"
-            title={`Platform: ${displayPlatform}`}
+      {/* Content */}
+      <div className="relative mb-3 flex-grow">
+        {!expanded && (
+          <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+        )}
+        <p
+          className={`text-muted-foreground text-xs mb-2 leading-relaxed ${
+            expanded ? "" : "max-h-16 overflow-hidden"
+          }`}
+        >
+          {safePrompt.content}
+        </p>
+        {safePrompt.content.length > 100 && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="text-xs text-accent hover:text-accent/80 hover:underline flex items-center"
+            aria-label={expanded ? "Show less content" : "Show more content"}
           >
-            <span className="mr-1" aria-hidden="true">
-              {platformEmoji}
-            </span>
-            {displayPlatform}
-          </span>
-          <span
-            className="prompt-tag bg-accent/15 text-accent-foreground flex items-center"
-            title={`Category: ${displayCategory}`}
-          >
-            <span className="mr-1" aria-hidden="true">
-              {categoryEmoji}
-            </span>
-            {displayCategory}
-          </span>
-          {safePrompt.tags?.map((tag, tagIndex) => (
-            <span
-              key={`${safePrompt.id}-tag-${tagIndex}`}
-              className="prompt-tag bg-secondary/80 text-secondary-foreground flex items-center"
-            >
-              <span className="text-accent mr-0.5">#</span>
-              {tag}
-            </span>
-          ))}
-        </div>
+            {expanded ? "Show less" : "Show more"}
+            <ChevronDown
+              className={`ml-1 h-3 w-3 transition-transform duration-200 ${
+                expanded ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        )}
+      </div>
 
-        {/* Accent border highlight on hover */}
-        {isHovered && (
-          <div
-            className="absolute inset-0 rounded-xl transition-opacity duration-300 pointer-events-none border-2 border-accent/20"
-            aria-hidden="true"
-          ></div>
+      {/* Footer with tags and actions */}
+      <div className="flex flex-wrap gap-1.5 mt-auto">
+        <span
+          className="platform-filter bg-teal-lighter/30 text-teal-dark flex items-center text-xs px-1.5 py-0.5 rounded"
+          title={`Platform: ${displayPlatform}`}
+        >
+          <span className="mr-1" aria-hidden="true">
+            {platformEmoji}
+          </span>
+          {displayPlatform}
+        </span>
+        <span
+          className="platform-filter bg-accent/10 text-accent flex items-center text-xs px-1.5 py-0.5 rounded"
+          title={`Category: ${displayCategory}`}
+        >
+          <span className="mr-1" aria-hidden="true">
+            {categoryEmoji}
+          </span>
+          {displayCategory}
+        </span>
+
+        {/* Action button if platform has chat URL */}
+        {chatUrl && (
+          <a
+            href={chatUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-auto text-xs text-accent hover:text-accent/80 hover:underline flex items-center"
+          >
+            Try
+            <ExternalLink size={10} className="ml-1" />
+          </a>
         )}
       </div>
     </motion.div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, BookOpen, Command, Menu, X } from "lucide-react";
+import { Github, Search, Command, Menu, X, BookOpen } from "lucide-react";
 import { useMediaQuery } from "../hooks/use-mobile";
 import { motion } from "framer-motion";
 
@@ -12,103 +12,114 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="py-6 bg-accent relative">
-      {/* Decorative elements with softer noise pattern */}
-      <div className="absolute inset-0 opacity-8 bg-noise-pattern mix-blend-overlay pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-accent-foreground/20"></div>
-
+    <header className="main-header">
       <div className="container max-w-6xl mx-auto px-4">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <motion.h1
-              className="text-3xl md:text-4xl font-bold text-white flex items-center gap-2.5"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Command className="h-8 w-8 text-accent-gold" strokeWidth={2} />
-              {/* Adjusted letter-spacing for better visual balance */}
-              <span className="tracking-tight">Prompt Stash</span>
-            </motion.h1>
-            <motion.p
-              className="text-white/85 mt-1.5 max-w-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              Your curated collection of powerful AI prompts
-            </motion.p>
+        <div className="flex items-center justify-between">
+          {/* Logo and site title */}
+          <div className="flex items-center">
+            <div className="flex items-center gap-2 mr-8">
+              <Command className="h-6 w-6 text-accent" strokeWidth={2} />
+              <span className="text-xl font-semibold">Prompt Stash</span>
+            </div>
+
+            {/* Nav items - only show on desktop */}
+            <nav className="hidden md:flex items-center space-x-6">
+              <a
+                href="#featured"
+                className="text-sm text-foreground hover:text-accent transition-colors"
+              >
+                Featured
+              </a>
+              <a
+                href="#new"
+                className="text-sm text-foreground hover:text-accent transition-colors"
+              >
+                New
+              </a>
+              <a
+                href="#categories"
+                className="text-sm text-foreground hover:text-accent transition-colors"
+              >
+                Categories
+              </a>
+              <a
+                href="#docs"
+                className="text-sm text-foreground hover:text-accent transition-colors"
+              >
+                Docs
+              </a>
+            </nav>
           </div>
 
-          {/* Desktop Navigation */}
-          <motion.div
-            className="hidden md:flex items-center gap-5"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <a
-              href="#features"
-              className="text-white/90 hover:text-white flex items-center gap-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-accent/50 rounded-md px-2 py-1"
-              aria-label="View documentation"
-            >
-              <BookOpen className="h-4 w-4" />
-              <span>Documentation</span>
-            </a>
-            {/* GitHub link as icon-only on desktop for cleaner look */}
+          {/* Right side actions */}
+          <div className="flex items-center gap-3">
             <a
               href="https://github.com/yourusername/prompt-stash"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 hover:bg-white/20 text-white p-2.5 rounded-full transition-all flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-accent/50"
-              aria-label="View GitHub repository"
+              className="hidden md:flex items-center gap-1.5 text-sm text-foreground hover:text-accent transition-colors"
             >
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
+              <Github size={16} />
+              <span>GitHub</span>
             </a>
-          </motion.div>
 
-          {/* Mobile Menu Button with improved focus styling */}
-          <div className="md:hidden flex justify-end">
+            {/* Mobile menu button */}
             <button
               onClick={toggleMobileMenu}
-              className="text-white p-1.5 rounded-md hover:bg-white/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              className="md:hidden p-1.5 rounded-md hover:bg-accent/10 transition-colors"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-5 w-5" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu with improved styling */}
+        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <motion.div
-            className="mt-4 py-4 px-3 bg-white/15 backdrop-blur-md rounded-lg md:hidden border border-white/10"
-            initial={{ opacity: 0, height: 0, y: -10 }}
-            animate={{ opacity: 1, height: "auto", y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -10 }}
+            className="md:hidden py-4 mt-4 border-t"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <nav className="flex flex-col space-y-3">
+            <nav className="flex flex-col space-y-4">
               <a
-                href="#features"
-                className="text-white/90 hover:text-white px-3 py-2.5 rounded-md text-sm font-medium transition-colors flex items-center gap-2.5 hover:bg-white/10"
+                href="#featured"
+                className="text-foreground hover:text-accent transition-colors"
               >
-                <BookOpen className="h-4 w-4" />
-                <span>Documentation</span>
+                Featured
+              </a>
+              <a
+                href="#new"
+                className="text-foreground hover:text-accent transition-colors"
+              >
+                New
+              </a>
+              <a
+                href="#categories"
+                className="text-foreground hover:text-accent transition-colors"
+              >
+                Categories
+              </a>
+              <a
+                href="#docs"
+                className="text-foreground hover:text-accent transition-colors"
+              >
+                Docs
               </a>
               <a
                 href="https://github.com/yourusername/prompt-stash"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/90 hover:text-white px-3 py-2.5 rounded-md text-sm font-medium transition-colors flex items-center gap-2.5 hover:bg-white/10"
+                className="flex items-center gap-1.5 text-foreground hover:text-accent transition-colors"
               >
-                <Github className="h-4 w-4" />
+                <Github size={16} />
                 <span>GitHub</span>
               </a>
             </nav>

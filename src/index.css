@@ -8,78 +8,76 @@
 
 @layer base {
   :root {
-    --background: 260 25% 99%;
-    --foreground: 260 10% 10%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
 
     --card: 0 0% 100%;
-    --card-foreground: 260 10% 10%;
+    --card-foreground: 222.2 47.4% 11.2%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 260 10% 10%;
+    --popover-foreground: 222.2 47.4% 11.2%;
 
     /* Teal as the primary accent color */
     --primary: 175 70% 41%;
-    --primary-foreground: 260 10% 98%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 260 20% 96%;
-    --secondary-foreground: 260 10% 10%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 260 20% 96%;
-    /* Improved contrast ratio for better accessibility */
-    --muted-foreground: 260 10% 35%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     /* Teal as the accent color */
     --accent: 175 70% 41%;
-    --accent-foreground: 260 10% 98%;
+    --accent-foreground: 0 0% 98%;
 
     /* Keeping a neutral secondary accent */
-    --secondary-accent: 210 40% 96%;
-    --secondary-accent-foreground: 260 10% 10%;
+    --secondary-accent: 210 40% 96.1%;
+    --secondary-accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 260 20% 90%;
-    --input: 260 20% 90%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
     --ring: 175 70% 41%;
 
-    --radius: 0.6rem;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 260 10% 8%;
-    --foreground: 260 10% 90%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 260 10% 10%;
-    --card-foreground: 260 10% 90%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 260 10% 10%;
-    --popover-foreground: 260 10% 90%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
     /* Teal as the primary accent color for dark mode */
     --primary: 175 70% 45%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 260 10% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 260 10% 15%;
-    /* Improved contrast ratio for dark mode */
-    --muted-foreground: 260 10% 75%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
     /* Teal as the accent color for dark mode */
     --accent: 175 70% 45%;
     --accent-foreground: 0 0% 98%;
 
     /* Neutral secondary accent for dark mode */
-    --secondary-accent: 210 40% 20%;
-    --secondary-accent-foreground: 0 0% 98%;
+    --secondary-accent: 217.2 32.6% 17.5%;
+    --secondary-accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 260 10% 20%;
-    --input: 260 10% 20%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
     --ring: 175 70% 45%;
   }
 }
@@ -91,12 +89,9 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background-image: theme("backgroundImage.noise-pattern");
-    /* Increased font size for better readability */
     font-size: 16px;
   }
 
-  /* More selective use of Cal Sans for high-impact headings */
   h1 {
     @apply font-display tracking-tight;
   }
@@ -120,20 +115,18 @@
   }
 
   .prompt-card {
-    @apply relative overflow-hidden rounded-xl border p-7 shadow-elegant backdrop-blur-sm bg-white/90
-    /* Use specific transition properties instead of transition-all for better performance */
-    transition-opacity transition-shadow transition-transform duration-300
-    hover:shadow-card-hover hover:scale-[1.01];
+    @apply relative overflow-hidden rounded-lg border p-5 shadow-sm bg-white
+    transition-all duration-200
+    hover:shadow-md hover:border-accent/30;
   }
 
   .prompt-tag {
     @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
-    /* Improved styling for tags */
-    bg-secondary/80 text-secondary-foreground transition-colors hover:bg-secondary;
+    bg-secondary text-secondary-foreground transition-colors hover:bg-secondary/80;
   }
 
   .glass-effect {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    @apply bg-white/90 backdrop-blur-md border border-white/20;
   }
 
   .subtle-border {
@@ -144,34 +137,75 @@
     @apply border border-accent/20;
   }
 
-  /* New premium badge style with teal accent */
+  /* Premium badge style with teal accent */
   .premium-badge {
     @apply relative inline-flex items-center px-3 py-1 text-xs font-medium rounded-full
-    bg-accent text-white shadow-subtle;
+    bg-accent text-white shadow-sm;
   }
 
-  /* Enhanced link styling */
+  /* Link styling */
   .text-link {
     @apply text-accent hover:text-accent/80 hover:underline focus-visible:outline-none 
     focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors;
   }
 
-  /* Consistent focus ring styling */
+  /* Focus ring styling */
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent 
     focus-visible:ring-offset-2 transition-shadow duration-200;
   }
 
-  /* Custom select dropdown styling */
+  /* Select dropdown styling */
   .select-custom {
     @apply rounded-md border border-input bg-background px-3 py-2 text-sm 
     ring-offset-background placeholder:text-muted-foreground focus:outline-none 
     focus:ring-2 focus:ring-ring focus:ring-offset-2;
   }
 
-  /* Staggered animation for cards */
+  /* Copy button */
+  .copy-button {
+    @apply absolute right-3 top-3 p-1.5 rounded-md bg-accent text-white
+    hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  /* Search input */
+  .search-input {
+    @apply w-full rounded-lg border border-input px-3 py-2 text-sm bg-background
+    focus:border-accent focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:outline-none;
+  }
+
+  /* Main header */
+  .main-header {
+    @apply py-4 border-b border-border bg-background sticky top-0 z-10;
+  }
+
+  /* Platform filter */
+  .platform-filter {
+    @apply inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium
+    bg-secondary text-foreground transition-colors hover:bg-secondary/80 cursor-pointer
+    border border-transparent hover:border-accent/30;
+  }
+
+  .platform-filter.active {
+    @apply bg-accent text-white hover:bg-accent/90;
+  }
+
+  /* Animations */
   .stagger-fade-in {
     @apply opacity-0;
     animation: fade-in 0.5s ease-out forwards;
+  }
+
+  .fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
