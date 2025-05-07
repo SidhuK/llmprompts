@@ -35,27 +35,43 @@ export const parseCSV = async (url: string): Promise<Prompt[]> => {
         // Add the last value
         values.push(currentValue);
         
-        // Create object from headers and values
-        const prompt: Partial<Prompt> = {};
+        // Create object from headers and values with default values for required fields
+        const prompt: Partial<Prompt> = {
+          id: '',
+          title: '',
+          content: '',
+          platform: 'other' as AIPlatform,  // Default value
+          category: 'other' as PromptCategory, // Default value
+          tags: []
+        };
+        
         headers.forEach((header, index) => {
           const value = values[index]?.replace(/^"|"$/g, '') || ''; // Remove quotes if present
           
           if (header === 'id') {
-            prompt.id = value;
+            prompt.id = value || prompt.id;
           } else if (header === 'title') {
-            prompt.title = value;
+            prompt.title = value || prompt.title;
           } else if (header === 'content') {
-            prompt.content = value;
+            prompt.content = value || prompt.content;
           } else if (header === 'platform') {
-            prompt.platform = value as AIPlatform;
+            prompt.platform = (value || 'other') as AIPlatform;
           } else if (header === 'category') {
-            prompt.category = value as PromptCategory;
+            prompt.category = (value || 'other') as PromptCategory;
           } else if (header === 'tags') {
-            prompt.tags = value ? value.split(',').map(tag => tag.trim()) : undefined;
+            prompt.tags = value ? value.split(',').map(tag => tag.trim()) : [];
           }
         });
         
-        return prompt as Prompt;
+        // Ensure we have valid values for all required fields
+        return {
+          id: prompt.id || 'unknown',
+          title: prompt.title || 'Untitled Prompt',
+          content: prompt.content || 'No content available',
+          platform: prompt.platform || 'other',
+          category: prompt.category || 'other',
+          tags: prompt.tags || []
+        } as Prompt;
       });
   } catch (error) {
     console.error('Error parsing CSV file:', error);
