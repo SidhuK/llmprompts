@@ -13,7 +13,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="main-header">
-      <div className="container max-w-6xl mx-auto px-4">
+      <div className="container mx-auto px-4 w-full max-w-full">
         <div className="flex items-center justify-between">
           {/* Logo and site title */}
           <div className="flex items-center">

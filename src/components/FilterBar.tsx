@@ -46,14 +46,14 @@ const FilterBar: React.FC<FilterBarProps> = ({
   ];
 
   return (
-    <div className="mb-6">
+    <div className="w-full h-full flex flex-col justify-center">
       {/* Platform filter */}
-      <div className="mb-4">
-        <h3 className="text-sm font-medium text-foreground mb-2 flex items-center">
+      <div className="mb-3">
+        <h3 className="text-sm font-medium text-foreground mb-2 flex items-center justify-end">
           <Filter className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
           Platform
         </h3>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 justify-end">
           {platforms.map((platform) => (
             <button
               key={platform.value}
@@ -70,12 +70,12 @@ const FilterBar: React.FC<FilterBarProps> = ({
       </div>
 
       {/* Category filter */}
-      <div>
-        <h3 className="text-sm font-medium text-foreground mb-2 flex items-center">
+      <div className="text-right">
+        <h3 className="text-sm font-medium text-foreground mb-2 flex items-center justify-end">
           <Filter className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
           Category
         </h3>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 justify-end">
           {categories.map((category) => (
             <button
               key={category.value}

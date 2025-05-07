@@ -176,14 +176,14 @@
 
   /* Main header */
   .main-header {
-    @apply py-4 border-b border-border bg-background sticky top-0 z-10;
+    @apply py-3 border-b border-border bg-background sticky top-0 z-10 w-full;
   }
 
   /* Platform filter */
   .platform-filter {
-    @apply inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium
     bg-secondary text-foreground transition-colors hover:bg-secondary/80 cursor-pointer
-    border border-transparent hover:border-accent/30;
+    border border-transparent hover:border-accent/30 whitespace-nowrap;
   }
 
   .platform-filter.active {

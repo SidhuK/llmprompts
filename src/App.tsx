@@ -80,31 +80,23 @@ function App() {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <main className="container px-4 py-8 mx-auto w-full max-w-full">
-        {/* Hero section at the top */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2 text-foreground">
-            AI Prompt Stash
-          </h1>
-          <p className="text-muted-foreground">
-            Discover and use powerful prompts for ChatGPT, Claude, Grok, and
-            other AI assistants. Find the perfect prompt to get better results
-            from your AI interactions.
-          </p>
-        </div>
-
-        {/* Search and filters section side by side */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          {/* Search bar - takes 1/3 of the width */}
-          <div className="md:col-span-1">
-            <SearchBar
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-            />
+      <main className="container px-4 py-4 mx-auto w-full max-w-full">
+        {/* Hero section and filters in two columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          {/* Left column with title and description */}
+          <div className="flex flex-col justify-center">
+            <h1 className="text-3xl font-bold mb-2 text-foreground">
+              AI Prompt Stash
+            </h1>
+            <p className="hero-description text-muted-foreground">
+              Discover and use powerful prompts for ChatGPT, Claude, Grok, and
+              other AI assistants. Find the perfect prompt to get better results
+              from your AI interactions.
+            </p>
           </div>
 
-          {/* Filters - takes 2/3 of the width */}
-          <div className="md:col-span-2">
+          {/* Right column with filters */}
+          <div className="filter-bar-container md:mt-0 mt-4">
             <FilterBar
               selectedPlatform={selectedPlatform}
               setSelectedPlatform={setSelectedPlatform}
@@ -112,6 +104,14 @@ function App() {
               setSelectedCategory={setSelectedCategory}
             />
           </div>
+        </div>
+
+        {/* Search bar - full width */}
+        <div className="mb-6">
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
         </div>
 
         {/* Prompt count */}
