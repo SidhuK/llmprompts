@@ -1,3 +1,4 @@
+
 import { Prompt, AIPlatform, PromptCategory } from "../types";
 import { parseCSV } from "../utils/csvParser";
 
@@ -10,8 +11,16 @@ export const getAllPrompts = async (): Promise<Prompt[]> => {
     return cachedPrompts;
   }
   
-  cachedPrompts = await parseCSV('/prompts.csv');
-  return cachedPrompts;
+  console.log('Fetching prompts from CSV...');
+  try {
+    cachedPrompts = await parseCSV('/prompts.csv');
+    console.log('Fetched prompts:', cachedPrompts.length, 'items');
+    console.log('First prompt:', cachedPrompts[0]);
+    return cachedPrompts;
+  } catch (error) {
+    console.error('Error fetching prompts:', error);
+    return [];
+  }
 };
 
 // Function to search prompts

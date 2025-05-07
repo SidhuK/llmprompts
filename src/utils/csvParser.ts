@@ -8,12 +8,15 @@ export const parseCSV = async (url: string): Promise<Prompt[]> => {
     
     // Split by rows and get headers
     const rows = csvText.split('\n');
-    const headers = rows[0].split(',');
+    const headers = rows[0].split(',').map(header => header.trim());
+    
+    console.log('CSV headers:', headers);
+    console.log('CSV first row:', rows[1]);
     
     // Process data rows
     return rows.slice(1)
       .filter(row => row.trim() !== '') // Skip empty rows
-      .map(row => {
+      .map((row, index) => {
         // This parsing handles quoted fields with commas inside
         const values: string[] = [];
         let currentValue = '';
@@ -35,29 +38,24 @@ export const parseCSV = async (url: string): Promise<Prompt[]> => {
         // Add the last value
         values.push(currentValue);
         
-        // Create object from headers and values with default values for required fields
-        const prompt: Partial<Prompt> = {
-          id: '',
-          title: '',
-          content: '',
-          platform: 'other' as AIPlatform,  // Default value
-          category: 'other' as PromptCategory, // Default value
-          tags: []
-        };
+        console.log(`Row ${index + 1} parsed values:`, values);
+        
+        // Create object from headers and values
+        const prompt: Partial<Prompt> = {};
         
         headers.forEach((header, index) => {
           const value = values[index]?.replace(/^"|"$/g, '') || ''; // Remove quotes if present
           
           if (header === 'id') {
-            prompt.id = value || prompt.id;
+            prompt.id = value || `prompt-${index}`;
           } else if (header === 'title') {
-            prompt.title = value || prompt.title;
+            prompt.title = value || 'Untitled Prompt';
           } else if (header === 'content') {
-            prompt.content = value || prompt.content;
+            prompt.content = value || 'No content available';
           } else if (header === 'platform') {
-            prompt.platform = (value || 'other') as AIPlatform;
+            prompt.platform = (value.toLowerCase() || 'other') as AIPlatform;
           } else if (header === 'category') {
-            prompt.category = (value || 'other') as PromptCategory;
+            prompt.category = (value.toLowerCase() || 'other') as PromptCategory;
           } else if (header === 'tags') {
             prompt.tags = value ? value.split(',').map(tag => tag.trim()) : [];
           }
@@ -65,7 +63,7 @@ export const parseCSV = async (url: string): Promise<Prompt[]> => {
         
         // Ensure we have valid values for all required fields
         return {
-          id: prompt.id || 'unknown',
+          id: prompt.id || `prompt-${index}`,
           title: prompt.title || 'Untitled Prompt',
           content: prompt.content || 'No content available',
           platform: prompt.platform || 'other',
