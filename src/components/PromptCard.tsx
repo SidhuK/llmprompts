@@ -35,7 +35,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
 
   return (
     <div 
-      className="prompt-card animate-fade-in" 
+      className="prompt-card bg-card border rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow animate-fade-in" 
       style={{ animationDelay }}
     >
       <div className="flex justify-between items-start mb-3">
@@ -54,14 +54,14 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
       </p>
 
       <div className="flex flex-wrap gap-2">
-        <span className={`prompt-tag ${platformClass}`}>
+        <span className={`prompt-tag ${platformClass} px-2 py-1 rounded-full text-xs font-medium`}>
           {displayPlatform}
         </span>
-        <span className={`prompt-tag ${categoryClass}`}>
+        <span className={`prompt-tag ${categoryClass} px-2 py-1 rounded-full text-xs font-medium`}>
           {displayCategory}
         </span>
         {prompt.tags?.map((tag) => (
-          <span key={tag} className="prompt-tag bg-secondary text-secondary-foreground">
+          <span key={tag} className="prompt-tag bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs font-medium">
             #{tag}
           </span>
         ))}
