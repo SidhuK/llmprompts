@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { AIPlatform, PromptCategory } from "../types";
-import { Filter } from "lucide-react";
 
 interface FilterBarProps {
   selectedPlatform: AIPlatform | "all";
@@ -49,11 +48,8 @@ const FilterBar: React.FC<FilterBarProps> = ({
     <div className="w-full h-full flex flex-col justify-center">
       {/* Platform filter */}
       <div className="mb-3">
-        <h3 className="text-sm font-medium text-foreground mb-2 flex items-center justify-end">
-          <Filter className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
-          Platform
-        </h3>
-        <div className="flex flex-wrap gap-1.5 justify-end">
+        <h3 className="text-sm font-bold text-foreground mb-2 flex items-center font-serif"></h3>
+        <div className="flex flex-wrap gap-1.5">
           {platforms.map((platform) => (
             <button
               key={platform.value}
@@ -70,12 +66,9 @@ const FilterBar: React.FC<FilterBarProps> = ({
       </div>
 
       {/* Category filter */}
-      <div className="text-right">
-        <h3 className="text-sm font-medium text-foreground mb-2 flex items-center justify-end">
-          <Filter className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
-          Category
-        </h3>
-        <div className="flex flex-wrap gap-1.5 justify-end">
+      <div>
+        <h3 className="text-sm font-bold text-foreground mb-2 flex items-center font-serif"></h3>
+        <div className="flex flex-wrap gap-1.5">
           {categories.map((category) => (
             <button
               key={category.value}
