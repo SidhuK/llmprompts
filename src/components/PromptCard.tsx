@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Prompt } from "../types";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Sparkles } from "lucide-react";
 import { getPlatformColor, getCategoryColor } from "../data/prompts";
+import { motion } from "framer-motion";
 
 interface PromptCardProps {
   prompt: Prompt;
@@ -10,14 +11,7 @@ interface PromptCardProps {
 
 const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
   const [copied, setCopied] = useState(false);
-
-  // Debug logging to see what data we're getting
-  useEffect(() => {
-    console.log(
-      `PromptCard ${index} received data:`,
-      JSON.stringify(prompt, null, 2)
-    );
-  }, [prompt, index]);
+  const [isHovered, setIsHovered] = useState(false);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(prompt.content);
@@ -39,7 +33,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
   const categoryClass = getCategoryColor(safePrompt.category);
 
   // Calculate animation delay based on index
-  const animationDelay = `${0.3 + index * 0.05}s`;
+  const animationDelay = `${0.1 + index * 0.05}s`;
 
   // Format platform and category for display
   const displayPlatform = safePrompt.platform
@@ -49,48 +43,106 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
   const displayCategory = safePrompt.category
     ? safePrompt.category.charAt(0).toUpperCase() + safePrompt.category.slice(1)
     : "Other";
+    
+  // Platform emoji mapping
+  const platformEmoji = {
+    chatgpt: "🤖",
+    grok: "🧠",
+    claude: "🧪",
+    llama: "🦙",
+    gemini: "♊",
+    other: "✨",
+  }[safePrompt.platform] || "✨";
+  
+  // Category emoji mapping
+  const categoryEmoji = {
+    creative: "🎨",
+    productivity: "⚡",
+    coding: "💻",
+    business: "📊",
+    academic: "📚",
+    fun: "🎮",
+    personal: "🧘",
+    other: "🔍",
+  }[safePrompt.category] || "🔍";
 
   return (
-    <div
-      className="prompt-card bg-card border rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow animate-fade-in"
+    <motion.div
+      className="prompt-card group"
       style={{ animationDelay }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex justify-between items-start mb-3">
-        <h3 className="text-lg font-medium">{safePrompt.title}</h3>
-        <button
-          onClick={copyToClipboard}
-          className="text-muted-foreground hover:text-prompt-purple transition-colors"
-          aria-label="Copy prompt"
-        >
-          {copied ? <Check size={18} /> : <Copy size={18} />}
-        </button>
-      </div>
-
-      <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-        {safePrompt.content}
-      </p>
-
-      <div className="flex flex-wrap gap-2">
-        <span
-          className={`prompt-tag ${platformClass} px-2 py-1 rounded-full text-xs font-medium`}
-        >
-          {displayPlatform}
-        </span>
-        <span
-          className={`prompt-tag ${categoryClass} px-2 py-1 rounded-full text-xs font-medium`}
-        >
-          {displayCategory}
-        </span>
-        {safePrompt.tags?.map((tag, tagIndex) => (
-          <span
-            key={`${safePrompt.id}-tag-${tagIndex}`}
-            className="prompt-tag bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs font-medium"
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 bg-gradient-radial from-white via-white to-transparent opacity-40 rounded-xl"></div>
+      {isHovered && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gradient-start/5 to-transparent rounded-xl transition-all duration-300"></div>
+      )}
+      
+      {/* Card content */}
+      <div className="relative z-10">
+        <div className="flex justify-between items-start mb-4">
+          <div className="flex items-center">
+            <span className="mr-2 text-lg">{platformEmoji}</span>
+            <h3 className="text-lg font-display font-semibold group-hover:text-prompt-purple transition-colors">
+              {safePrompt.title}
+            </h3>
+          </div>
+          <motion.button
+            onClick={copyToClipboard}
+            className={`text-white bg-prompt-purple p-1.5 rounded-md transition-all ${
+              copied ? "bg-green-500" : "hover:bg-prompt-purple-dark"
+            }`}
+            aria-label="Copy prompt"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            #{tag}
+            {copied ? (
+              <Check size={16} className="text-white" />
+            ) : (
+              <Copy size={16} className="text-white" />
+            )}
+          </motion.button>
+        </div>
+
+        <div className="relative mb-5">
+          <div className="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-r from-transparent to-white/90 pointer-events-none"></div>
+          <p className="text-muted-foreground text-sm mb-4 line-clamp-3 pr-6 leading-relaxed">
+            {safePrompt.content}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-2 mt-auto">
+          <span
+            className={`prompt-tag ${platformClass} px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1`}
+          >
+            {platformEmoji && <span>{platformEmoji}</span>}
+            {displayPlatform}
           </span>
-        ))}
+          <span
+            className={`prompt-tag ${categoryClass} px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1`}
+          >
+            {categoryEmoji && <span>{categoryEmoji}</span>}
+            {displayCategory}
+          </span>
+          {safePrompt.tags?.map((tag, tagIndex) => (
+            <span
+              key={`${safePrompt.id}-tag-${tagIndex}`}
+              className="prompt-tag bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1"
+            >
+              <span className="text-prompt-purple">#</span>
+              {tag}
+            </span>
+          ))}
+        </div>
+        
+        {/* Subtle interactive highlight effect */}
+        <div className={`absolute inset-0 border border-prompt-purple/20 rounded-xl opacity-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : ''}`}></div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

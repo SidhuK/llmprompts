@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/cal-sans@1.0.1/cal-sans.css");
 
 @tailwind base;
 @tailwind components;
@@ -5,7 +8,7 @@
 
 @layer base {
   :root {
-    --background: 260 25% 98%;
+    --background: 260 25% 99%;
     --foreground: 260 10% 10%;
 
     --card: 0 0% 100%;
@@ -14,7 +17,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 260 10% 10%;
 
-    --primary: 260 45% 55%;
+    --primary: 265 45% 55%;
     --primary-foreground: 260 10% 98%;
 
     --secondary: 260 20% 96%;
@@ -33,7 +36,7 @@
     --input: 260 20% 90%;
     --ring: 260 45% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0.6rem;
   }
 
   .dark {
@@ -73,16 +76,46 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: theme("backgroundImage.noise-pattern");
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-display tracking-tight;
+  }
+
+  code,
+  pre {
+    @apply font-mono;
   }
 }
 
 @layer components {
-  .prompt-card {
-    @apply relative overflow-hidden rounded-lg border p-6 shadow-sm transition-all hover:shadow-md;
+  .gradient-heading {
+    @apply bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end bg-clip-text text-transparent;
   }
-  
+
+  .prompt-card {
+    @apply relative overflow-hidden rounded-xl border p-6 shadow-elegant backdrop-blur-sm bg-white/90 transition-all hover:shadow-card-hover;
+  }
+
   .prompt-tag {
     @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+
+  .subtle-border {
+    @apply border border-slate-200/60;
+  }
+
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:rounded-[inherit] before:bg-gradient-to-r before:from-gradient-start before:to-gradient-end before:opacity-30 before:-z-10;
   }
 }
