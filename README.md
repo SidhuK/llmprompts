@@ -1,73 +1,100 @@
-# Welcome to your Lovable project
+# LLMPrompts.xyz
 
-## Project info
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fllmprompts.xyz)](https://llmprompts.xyz)
+[![Twitter Follow](https://img.shields.io/twitter/follow/karat_sidhu?style=social)](https://x.com/karat_sidhu)
 
-**URL**: https://lovable.dev/projects/bd88f84c-e3cc-4f3a-83e1-d105ab3f1096
+A curated collection of high-quality prompts for AI assistants like ChatGPT, Claude, Gemini, Perplexity, Grok, and more. Enhance your AI interactions with our powerful, tested prompts.
 
-## How can I edit this code?
+## 🌟 Features
 
-There are several ways of editing your application.
+- **Extensive Collection**: Hundreds of prompts organized by platform and category
+- **Platform-Specific**: Optimized prompts for ChatGPT, Claude, Gemini, Perplexity, Grok, and more
+- **Categorized**: Easily find prompts for coding, writing, data analysis, creative work, and more
+- **Search & Filter**: Quickly locate exactly what you need with our search functionality
+- **Responsive Design**: Works on mobile, tablet, and desktop
+- **Contribution-Friendly**: Easily contribute your own prompts
 
-**Use Lovable**
+## ⚡ Live Demo
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bd88f84c-e3cc-4f3a-83e1-d105ab3f1096) and start prompting.
+Visit [LLMPrompts.xyz](https://llmprompts.xyz) to see the site in action.
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Technologies Used
 
-**Use your preferred IDE**
+- **React** - Frontend library
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling framework
+- **Framer Motion** - Animations
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📦 Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+- Node.js (v16 or higher)
+- npm or yarn
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. Clone the repository:
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+git clone https://github.com/SidhuK/llmprompts.git
+cd llmprompts
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm install
+# or
+yarn install
+```
 
-**Use GitHub Codespaces**
+3. Run the development server:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-## What technologies are used for this project?
+4. Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
 
-This project is built with:
+## 🤝 Contributing
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+We welcome contributions from the community! Here's how you can help:
 
-## How can I deploy this project?
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-prompt`)
+3. Add your prompts to the appropriate files
+4. Commit your changes (`git commit -m 'Add some amazing prompts'`)
+5. Push to the branch (`git push origin feature/amazing-prompt`)
+6. Open a Pull Request
 
-Simply open [Lovable](https://lovable.dev/projects/bd88f84c-e3cc-4f3a-83e1-d105ab3f1096) and click on Share -> Publish.
+### Contribution Guidelines
 
-## Can I connect a custom domain to my Lovable project?
+- Use descriptive names for your prompts
+- Include what platform the prompt is optimized for
+- Categorize your prompt correctly
+- Test your prompt before submitting
+- Follow the existing formatting
 
-Yes, you can!
+## 📄 License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 👏 Acknowledgments
+
+- Thanks to all contributors who have provided prompts
+- The amazing AI community for inspiration
+- Special thanks to the developers of the tools and libraries used in this project
+
+## 📞 Contact
+
+- Twitter: [@karat_sidhu](https://twitter.com/karat_sidhu)
+- GitHub: [SidhuK](https://github.com/SidhuK)
+
+## 🔍 SEO Keywords
+
+AI prompts, ChatGPT prompts, Claude prompts, Gemini prompts, Perplexity prompts, Grok prompts, LLM prompts, AI assistant prompts, prompt engineering, AI prompt collection, prompt library, LLM templates, AI conversation starters, LLM conversation prompts, AI writing prompts, AI coding prompts

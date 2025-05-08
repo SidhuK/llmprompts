@@ -235,6 +235,27 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "LLMPrompts.xyz",
+            url: "https://llmprompts.xyz",
+            description:
+              "A collection of powerful AI prompts for ChatGPT, Claude, Gemini, and other AI assistants",
+            keywords:
+              "AI prompts, ChatGPT prompts, Claude prompts, Gemini prompts, AI assistant prompts",
+            author: {
+              "@type": "Person",
+              name: "Karat Sidhu",
+              url: "https://x.com/karat_sidhu",
+            },
+          }),
+        }}
+      />
     </footer>
   );
 };
