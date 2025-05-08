@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Heart } from "lucide-react";
+import { Github, Heart, Coffee } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
@@ -17,8 +17,7 @@ const Footer: React.FC = () => {
 
             <div className="text-xs text-muted-foreground pr-4">
               <p className="mb-1">
-                Get more out of your AI interactions with this curated
-                collection of effective prompts. Developed by{" "}
+                Developed by{" "}
                 <a
                   href="https://x.com/karat_sidhu"
                   target="_blank"
@@ -27,9 +26,9 @@ const Footer: React.FC = () => {
                 >
                   Karat Sidhu
                 </a>
-                , these prompts are primarily for ChatGPT but are easily
-                adaptable for use with Claude, Gemini, Llama, and other AI
-                assistants.
+                , these prompts are adaptable for use with ChatGPT, Claude,
+                Gemini, Llama, and other AI assistants. I work on this project
+                during my free time.
               </p>
             </div>
           </div>
@@ -53,6 +52,7 @@ const Footer: React.FC = () => {
               </p>
             </div>
 
+            {/* Social links */}
             <div className="flex items-center gap-4 text-sm">
               <a
                 href="https://github.com/SidhuK/llmprompts"
@@ -63,9 +63,36 @@ const Footer: React.FC = () => {
                 <Github size={14} />
                 <span>GitHub</span>
               </a>
-              <span className="text-border">•</span>
 
-              <span className="text-border">•</span>
+              <a
+                href="https://x.com/karat_sidhu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors"
+                aria-label="Twitter/X"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="fill-current"
+                >
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                <span>Twitter</span>
+              </a>
+
+              <a
+                href="https://buymeacoffee.com/karatsidhu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors"
+                aria-label="Buy Me a Coffee"
+              >
+                <Coffee size={14} />
+                <span>Coffee</span>
+              </a>
             </div>
           </div>
         </div>

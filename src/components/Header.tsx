@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Search, Command, Menu, X, BookOpen } from "lucide-react";
+import { Github, Command, Menu, X, Coffee } from "lucide-react";
 import { useMediaQuery } from "../hooks/use-mobile";
 import { motion } from "framer-motion";
 
@@ -21,46 +21,46 @@ const Header: React.FC = () => {
               <Command className="h-6 w-6 text-accent" strokeWidth={2} />
               <span className="text-xl font-semibold">LLM Prompts</span>
             </div>
-
-            {/* Nav items - only show on desktop */}
-            <nav className="hidden md:flex items-center space-x-6">
-              <a
-                href="#featured"
-                className="text-sm text-foreground hover:text-accent transition-colors"
-              >
-                Featured
-              </a>
-              <a
-                href="#new"
-                className="text-sm text-foreground hover:text-accent transition-colors"
-              >
-                New
-              </a>
-              <a
-                href="#categories"
-                className="text-sm text-foreground hover:text-accent transition-colors"
-              >
-                Categories
-              </a>
-              <a
-                href="#docs"
-                className="text-sm text-foreground hover:text-accent transition-colors"
-              >
-                Docs
-              </a>
-            </nav>
           </div>
 
           {/* Right side actions */}
           <div className="flex items-center gap-3">
             <a
-              href="https://github.com/yourusername/prompt-stash"
+              href="https://github.com/SidhuK/llmprompts"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-1.5 text-sm text-foreground hover:text-accent transition-colors"
+              aria-label="GitHub"
             >
               <Github size={16} />
-              <span>GitHub</span>
+            </a>
+
+            <a
+              href="https://x.com/karat_sidhu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-1.5 text-sm text-foreground hover:text-accent transition-colors"
+              aria-label="Twitter/X"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-current"
+              >
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+
+            <a
+              href="https://buymeacoffee.com/karatsidhu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-1.5 text-sm text-foreground hover:text-accent transition-colors"
+              aria-label="Buy Me a Coffee"
+            >
+              <Coffee size={16} />
             </a>
 
             {/* Mobile menu button */}
@@ -90,37 +90,39 @@ const Header: React.FC = () => {
           >
             <nav className="flex flex-col space-y-4">
               <a
-                href="#featured"
-                className="text-foreground hover:text-accent transition-colors"
-              >
-                Featured
-              </a>
-              <a
-                href="#new"
-                className="text-foreground hover:text-accent transition-colors"
-              >
-                New
-              </a>
-              <a
-                href="#categories"
-                className="text-foreground hover:text-accent transition-colors"
-              >
-                Categories
-              </a>
-              <a
-                href="#docs"
-                className="text-foreground hover:text-accent transition-colors"
-              >
-                Docs
-              </a>
-              <a
-                href="https://github.com/yourusername/prompt-stash"
+                href="https://github.com/SidhuK/llmprompts"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-foreground hover:text-accent transition-colors"
               >
                 <Github size={16} />
                 <span>GitHub</span>
+              </a>
+              <a
+                href="https://x.com/karat_sidhu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-foreground hover:text-accent transition-colors"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="fill-current"
+                >
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                <span>Twitter/X</span>
+              </a>
+              <a
+                href="https://buymeacoffee.com/karatsidhu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-foreground hover:text-accent transition-colors"
+              >
+                <Coffee size={16} />
+                <span>Buy Me a Coffee</span>
               </a>
             </nav>
           </motion.div>
