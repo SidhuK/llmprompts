@@ -127,6 +127,47 @@ const Footer: React.FC = () => {
                   />
                 </svg>
               </a>
+              <span className="mx-1.5 text-muted-foreground/50">•</span>
+              <span>Vibecoded with</span>
+              <a
+                href="https://cursor.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center hover:text-accent transition-colors ml-1"
+                aria-label="Cursor"
+                title="Cursor"
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M9.00002 11.5C9.00002 9.01 11.01 7 13.5 7C15.99 7 18 9.01 18 11.5C18 13.99 15.99 16 13.5 16"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M9 15H13.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="ml-0.5">Cursor</span>
+              </a>
             </div>
           </div>
 
