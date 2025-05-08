@@ -109,9 +109,54 @@ const Index = () => {
               </span>
             </h1>
             <p className="text-white/80 text-lg md:text-xl max-w-2xl">
-              Your personal collection of high-quality prompts for various AI
-              platforms. Search, filter, and copy with ease.
+              Discover and use powerful prompts for ChatGPT, Claude, Grok, and
+              other AI assistants. Find the perfect prompt to get better results
+              from your AI interactions.
             </p>
+
+            <div className="mt-2 flex items-center text-white/60 text-sm">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="mr-1.5"
+              >
+                <path
+                  d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M9.00002 11.5C9.00002 9.01 11.01 7 13.5 7C15.99 7 18 9.01 18 11.5C18 13.99 15.99 16 13.5 16"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M9 15H13.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>
+                Vibecoded using{" "}
+                <a
+                  href="https://cursor.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-gold hover:underline"
+                >
+                  Cursor
+                </a>
+              </span>
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <a

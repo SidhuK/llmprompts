@@ -27,8 +27,8 @@ const Footer: React.FC = () => {
                   Karat Sidhu
                 </a>
                 , these prompts are adaptable for use with ChatGPT, Claude,
-                Gemini, Llama, and other AI assistants. This is a
-                community-driven that I work on in my spare time.
+                Gemini, Llama, and other AI assistants. I work on this website
+                in my spare time as a hobby.
               </p>
             </div>
 

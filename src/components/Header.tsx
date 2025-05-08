@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Command, Menu, X, Coffee, Sparkles } from "lucide-react";
+import { Github, Command, Menu, X, Coffee } from "lucide-react";
 import { useMediaQuery } from "../hooks/use-mobile";
 import { motion } from "framer-motion";
 
@@ -20,14 +20,6 @@ const Header: React.FC = () => {
             <div className="flex items-center gap-2 mr-8">
               <Command className="h-6 w-6 text-accent" strokeWidth={2} />
               <span className="text-xl font-semibold">LLM Prompts</span>
-            </div>
-
-            {/* Vibecoded text */}
-            <div className="hidden md:flex items-center text-xs text-muted-foreground opacity-75">
-              <span className="flex items-center gap-1">
-                <Sparkles size={12} className="text-accent" />
-                Vibecoded using Cursor
-              </span>
             </div>
           </div>
 
@@ -132,10 +124,6 @@ const Header: React.FC = () => {
                 <Coffee size={16} />
                 <span>Buy Me a Coffee</span>
               </a>
-              <div className="flex items-center gap-1.5 text-muted-foreground">
-                <Sparkles size={14} className="text-accent" />
-                <span>Vibecoded using Cursor</span>
-              </div>
             </nav>
           </motion.div>
         )}
