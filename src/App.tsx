@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import FilterBar from "./components/FilterBar";
 import PromptCard from "./components/PromptCard";
@@ -80,14 +81,12 @@ function App() {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <main className="container px-4 py-4 mx-auto w-full max-w-full">
+      <main className="container px-4 py-4 mx-auto w-full max-w-full pb-16">
         {/* Hero section and filters in two columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           {/* Left column with title and description */}
           <div className="flex flex-col justify-center">
-            <h1 className="text-3xl font-bold mb-2 text-foreground">
-              AI Prompt Stash
-            </h1>
+            <h1 className="text-3xl font-bold mb-2 text-foreground"></h1>
             <p className="hero-description text-muted-foreground">
               Discover and use powerful prompts for ChatGPT, Claude, Grok, and
               other AI assistants. Find the perfect prompt to get better results
@@ -166,30 +165,8 @@ function App() {
         )}
       </main>
 
-      {/* Footer - made full width */}
-      <footer className="border-t py-6 mt-12">
-        <div className="container px-4 mx-auto text-center text-muted-foreground text-sm w-full max-w-full">
-          <p>Prompt Stash — A curated collection of powerful AI prompts</p>
-          <p className="mt-2">
-            <a
-              href="https://github.com/yourusername/prompt-stash"
-              className="text-accent hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>{" "}
-            •
-            <a href="#privacy" className="text-accent hover:underline ml-3">
-              Privacy
-            </a>{" "}
-            •
-            <a href="#terms" className="text-accent hover:underline ml-3">
-              Terms
-            </a>
-          </p>
-        </div>
-      </footer>
+      {/* Using the new Footer component */}
+      <Footer />
     </div>
   );
 }
