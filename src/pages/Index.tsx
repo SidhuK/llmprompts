@@ -114,32 +114,30 @@ const Index = () => {
               from your AI interactions.
             </p>
 
-            <div className="mt-2 flex items-center text-white/60 text-sm">
+            <div className="mt-3 flex items-center justify-center text-white/80 text-sm bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
               <svg
-                width="12"
-                height="12"
+                width="14"
+                height="14"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="mr-1.5"
+                className="mr-1.5 text-accent-gold"
+                stroke="currentColor"
               >
                 <path
                   d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
-                  stroke="currentColor"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
                   d="M9.00002 11.5C9.00002 9.01 11.01 7 13.5 7C15.99 7 18 9.01 18 11.5C18 13.99 15.99 16 13.5 16"
-                  stroke="currentColor"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
                   d="M9 15H13.5"
-                  stroke="currentColor"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -151,7 +149,7 @@ const Index = () => {
                   href="https://cursor.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-gold hover:underline"
+                  className="text-accent-gold hover:underline font-medium"
                 >
                   Cursor
                 </a>
