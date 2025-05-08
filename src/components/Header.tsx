@@ -19,7 +19,7 @@ const Header: React.FC = () => {
           <div className="flex items-center">
             <div className="flex items-center gap-2 mr-8">
               <Command className="h-6 w-6 text-accent" strokeWidth={2} />
-              <span className="text-xl font-semibold">Prompt Stash</span>
+              <span className="text-xl font-semibold">LLM Prompts</span>
             </div>
 
             {/* Nav items - only show on desktop */}

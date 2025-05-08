@@ -271,7 +271,7 @@ const Index = () => {
                     </svg>
                   </span>
                   <h3 className="text-xl font-bold font-display">
-                    Prompt Stash
+                    LLM Prompts
                   </h3>
                 </div>
                 <p className="text-muted-foreground mb-4">
@@ -405,7 +405,7 @@ const Index = () => {
             </div>
             <div className="border-t border-slate-200 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
               <p className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} Prompt Stash. All rights reserved.
+                © {new Date().getFullYear()} LLM Prompts. All rights reserved.
               </p>
               <p className="text-sm text-muted-foreground mt-2 md:mt-0">
                 Built with ❤️ using React + Tailwind

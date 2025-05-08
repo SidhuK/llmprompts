@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Home, ArrowLeft } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Home, ArrowLeft } from "lucide-react";
 
 const NotFound = () => {
   return (
@@ -9,10 +9,10 @@ const NotFound = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-noise-pattern opacity-5 pointer-events-none"></div>
       <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-radial from-gradient-start/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
-      
+
       <main className="flex-grow flex items-center justify-center p-6 relative z-10">
         <div className="max-w-md w-full">
-          <motion.div 
+          <motion.div
             className="text-center mb-8"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -28,11 +28,13 @@ const NotFound = () => {
                 </h1>
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2 font-display">Page not found</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 font-display">
+              Page not found
+            </h2>
             <p className="text-muted-foreground mb-8 max-w-sm mx-auto">
               The page you're looking for doesn't exist or has been moved.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/"
@@ -52,7 +54,7 @@ const NotFound = () => {
           </motion.div>
 
           {/* Decorative card */}
-          <motion.div 
+          <motion.div
             className="bg-white/80 backdrop-blur-sm border border-slate-200/50 rounded-xl p-6 shadow-subtle mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,10 +62,20 @@ const NotFound = () => {
           >
             <div className="flex items-center">
               <div className="h-10 w-10 rounded-full bg-prompt-purple/10 flex items-center justify-center text-prompt-purple mr-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
-                  <path d="M12 9v4"/>
-                  <path d="M12 17h.01"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                  <path d="M12 9v4" />
+                  <path d="M12 17h.01" />
                 </svg>
               </div>
               <div className="flex-1">
@@ -76,10 +88,10 @@ const NotFound = () => {
           </motion.div>
         </div>
       </main>
-      
+
       <footer className="py-4 text-center text-sm text-muted-foreground bg-white/50 backdrop-blur-sm border-t border-slate-200/50">
         <div className="container max-w-6xl mx-auto px-4">
-          © {new Date().getFullYear()} Prompt Stash. All rights reserved.
+          © {new Date().getFullYear()} LLM Prompts. All rights reserved.
         </div>
       </footer>
     </div>
