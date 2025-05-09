@@ -71,11 +71,19 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
   const getChatUrl = () => {
     switch (safePrompt.platform) {
       case "chatgpt":
-        return `https://chat.openai.com/g/g-8g8MWgJkf-prompt-assistant?prompt=${encodeURIComponent(
+        return `https://chatgpt.com/?prompt=${encodeURIComponent(
           safePrompt.content
         )}`;
       case "claude":
         return `https://claude.ai/chat/new?prompt=${encodeURIComponent(
+          safePrompt.content
+        )}`;
+      case "gemini":
+        return `https://gemini.google.com/app?prompt=${encodeURIComponent(
+          safePrompt.content
+        )}`;
+      case "grok":
+        return `https://grok.x.ai/?prompt=${encodeURIComponent(
           safePrompt.content
         )}`;
       default:
