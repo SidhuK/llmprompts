@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Prompt } from "../types";
-import { Copy, Check, ChevronDown, ExternalLink } from "lucide-react";
+import { Copy, Check, ChevronDown, ExternalLink, Share2, Twitter, Facebook, Linkedin, Instagram, Link } from "lucide-react";
 import { getPlatformColor, getCategoryColor } from "../data/prompts";
 import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 interface PromptCardProps {
   prompt: Prompt;
@@ -93,10 +99,53 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
 
   const chatUrl = getChatUrl();
 
+  // Function to generate share URLs for different platforms
+  const getShareUrl = (platform: string) => {
+    // Create a URL that points to this prompt (you may need to adjust based on actual URL structure)
+    const promptUrl = `${window.location.origin}?prompt=${encodeURIComponent(
+      safePrompt.id
+    )}`;
+    
+    const shareText = `Check out this ${safePrompt.platform} prompt: ${safePrompt.title}`;
+    
+    switch (platform) {
+      case "twitter":
+        return `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          shareText
+        )}&url=${encodeURIComponent(promptUrl)}`;
+      case "facebook":
+        return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+          promptUrl
+        )}`;
+      case "linkedin":
+        return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+          promptUrl
+        )}&title=${encodeURIComponent(shareText)}`;
+      case "reddit":
+        return `https://www.reddit.com/submit?url=${encodeURIComponent(
+          promptUrl
+        )}&title=${encodeURIComponent(shareText)}`;
+      default:
+        return promptUrl;
+    }
+  };
+
   const handleTryIt = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     if (chatUrl) {
       window.open(chatUrl, "_blank");
+    }
+  };
+
+  const handleShare = (platform: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const shareUrl = getShareUrl(platform);
+    if (platform === "copy") {
+      navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } else {
+      window.open(shareUrl, "_blank");
     }
   };
 
@@ -166,16 +215,48 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
             {displayCategory}
           </span>
 
-          {/* Action button if platform has chat URL */}
-          {chatUrl && (
-            <button
-              onClick={(e) => handleTryIt(e)}
-              className="ml-auto text-xs text-accent hover:text-accent/80 hover:underline flex items-center"
-            >
-              Try it
-              <ExternalLink size={10} className="ml-1" />
-            </button>
-          )}
+          <div className="ml-auto flex items-center gap-2">
+            {/* Share dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-xs text-accent hover:text-accent/80 hover:underline flex items-center"
+                >
+                  Share
+                  <Share2 size={10} className="ml-1" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={(e) => handleShare("twitter", e)}>
+                  <Twitter size={14} className="mr-2" /> Twitter/X
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={(e) => handleShare("facebook", e)}>
+                  <Facebook size={14} className="mr-2" /> Facebook
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={(e) => handleShare("linkedin", e)}>
+                  <Linkedin size={14} className="mr-2" /> LinkedIn
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={(e) => handleShare("reddit", e)}>
+                  <ExternalLink size={14} className="mr-2" /> Reddit
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={(e) => handleShare("copy", e)}>
+                  <Link size={14} className="mr-2" /> Copy Link
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Action button if platform has chat URL */}
+            {chatUrl && (
+              <button
+                onClick={(e) => handleTryIt(e)}
+                className="text-xs text-accent hover:text-accent/80 hover:underline flex items-center"
+              >
+                Try it
+                <ExternalLink size={10} className="ml-1" />
+              </button>
+            )}
+          </div>
         </div>
       </motion.div>
 
@@ -234,6 +315,36 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
                   </>
                 )}
               </Button>
+              
+              {/* Share Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-1"
+                  >
+                    <Share2 size={14} /> Share
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={(e) => handleShare("twitter", e)}>
+                    <Twitter size={14} className="mr-2" /> Twitter/X
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={(e) => handleShare("facebook", e)}>
+                    <Facebook size={14} className="mr-2" /> Facebook
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={(e) => handleShare("linkedin", e)}>
+                    <Linkedin size={14} className="mr-2" /> LinkedIn
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={(e) => handleShare("reddit", e)}>
+                    <ExternalLink size={14} className="mr-2" /> Reddit
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={(e) => handleShare("copy", e)}>
+                    <Link size={14} className="mr-2" /> Copy Link
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
 
               {chatUrl && (
                 <Button
