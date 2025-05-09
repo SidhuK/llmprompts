@@ -1,0 +1,24 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Component Structure
+
+The project follows a component-based architecture using React and Tailwind CSS.
+
+## Main Components
+
+- `<Header />` - Top navigation bar
+- `<Footer />` - Page footer
+- `<SearchBar />` - Search input for filtering prompts
+- `<FilterBar />` - Filtering options for platforms and categories
+- `<PromptCard />` - Card display for individual prompts
+
+## Component Files
+
+- [src/components/Header.tsx](mdc:src/components/Header.tsx) - Header component
+- [src/components/Footer.tsx](mdc:src/components/Footer.tsx) - Footer component
+- [src/components/SearchBar.tsx](mdc:src/components/SearchBar.tsx) - Search input component
+- [src/components/FilterBar.tsx](mdc:src/components/FilterBar.tsx) - Filtering options component
+- [src/components/PromptCard.tsx](mdc:src/components/PromptCard.tsx) - Prompt card component

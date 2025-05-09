@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Prompt Management
+
+The project manages AI prompts with various functions for loading, filtering, and displaying.
+
+## Key Functions
+
+- `getAllPrompts()` - Fetches prompts from a CSV file or uses cached data
+- `searchPrompts(query)` - Searches prompts by title, content, or tags
+- `filterPromptsByPlatform(platform)` - Filters prompts by AI platform
+- `filterPromptsByCategory(category)` - Filters prompts by category
+- `getPlatformColor(platform)` - Gets CSS color classes for an AI platform
+- `getCategoryColor(category)` - Gets CSS color classes for a prompt category
+
+## Implementation Files
+
+- [src/data/prompts.ts](mdc:src/data/prompts.ts) - Main prompt management functions
+- [src/utils/csvParser.ts](mdc:src/utils/csvParser.ts) - CSV parsing utility
+- [src/App.tsx](mdc:src/App.tsx) - Uses prompt functions for the main UI
+
+## Data Flow
+
+1. CSV data is loaded with `getAllPrompts()`
+2. User searches or filters are applied with `searchPrompts()`, `filterPromptsByPlatform()`, or `filterPromptsByCategory()`
+3. Filtered prompts are displayed using `PromptCard` components

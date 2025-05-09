@@ -1,0 +1,40 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Styling Guidelines
+
+The project uses Tailwind CSS for styling components.
+
+## Styling Structure
+
+- [tailwind.config.ts](mdc:tailwind.config.ts) - Tailwind configuration
+- [postcss.config.js](mdc:postcss.config.js) - PostCSS configuration for Tailwind
+- [src/index.css](mdc:src/index.css) - Global CSS styles
+- [src/App.css](mdc:src/App.css) - App-specific CSS styles
+
+## Tailwind Conventions
+
+- Use responsive prefixes for different screen sizes: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
+- Use dark mode variant (`dark:`) for dark theme styles
+- Use state variants like `hover:`, `focus:`, `active:` for interactive elements
+- Use group and peer modifiers for parent-child interactions
+
+## Example Tailwind Classes
+
+```jsx
+// Responsive design
+<div className="text-center sm:text-left md:text-right"></div>
+
+// Dark mode
+<div className="bg-white text-black dark:bg-gray-800 dark:text-white"></div>
+
+// Interactive states
+<button className="bg-blue-500 hover:bg-blue-600 focus:ring-2"></button>
+
+// Group interaction
+<div className="group">
+  <span className="text-gray-500 group-hover:text-blue-500"></span>
+</div>
+```

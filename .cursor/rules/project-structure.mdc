@@ -1,0 +1,16 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Structure
+
+This is a collection of powerful AI prompts for ChatGPT, Claude, Gemini, and other AI assistants.
+
+## Core Files
+
+- [src/App.tsx](mdc:src/App.tsx) - Main application component and routing
+- [src/main.tsx](mdc:src/main.tsx) - Entry point for the application
+- [src/data/prompts.ts](mdc:src/data/prompts.ts) - Data models and functions for managing prompts
+- [src/types/index.ts](mdc:src/types/index.ts) - TypeScript type definitions
+- [package.json](mdc:package.json) - Project dependencies and scripts

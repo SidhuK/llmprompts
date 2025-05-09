@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Data Models and Types
+
+The project uses TypeScript interfaces and types to define the data structure.
+
+## Main Types
+
+- `AIPlatform` - Enum of supported AI platforms: "chatgpt", "claude", "llama", "gemini", "grok", "other"
+- `PromptCategory` - Enum of prompt categories: "creative", "productivity", "coding", "business", "academic", "fun", "personal", "other"
+- `Prompt` - Interface for prompt data structure
+
+## Type Definitions
+
+```typescript
+export type AIPlatform = "chatgpt" | "grok" | "claude" | "llama" | "gemini" | "other";
+
+export type PromptCategory = 
+  | "creative" 
+  | "productivity" 
+  | "coding" 
+  | "business" 
+  | "academic" 
+  | "fun" 
+  | "personal" 
+  | "other";
+
+export interface Prompt {
+  id: string;
+  title: string;
+  content: string;
+  platform: AIPlatform;
+  category: PromptCategory;
+  tags?: string[];
+}
+```
+
+## Data Management Files
+
+- [src/types/index.ts](mdc:src/types/index.ts) - Type definitions
+- [src/data/prompts.ts](mdc:src/data/prompts.ts) - Prompt data management
