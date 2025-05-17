@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://llmprompts.xyz/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Platform Pages -->
+  <url>
+    <loc>https://llmprompts.xyz/platform/chatgpt/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/platform/claude/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/platform/gemini/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/platform/grok/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/platform/llama/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/platform/other/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category Pages -->
+  <url>
+    <loc>https://llmprompts.xyz/category/coding/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/category/productivity/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/category/creative/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/category/personal/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/category/business/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/category/academic/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/category/fun/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Individual Prompt Pages -->
+  <url>
+    <loc>https://llmprompts.xyz/prompt/1/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/prompt/2/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/prompt/3/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/prompt/4/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/prompt/5/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/prompt/6/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/prompt/7/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/prompt/8/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://llmprompts.xyz/prompt/9/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod> <!-- Replace with actual last modified date -->
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset> 

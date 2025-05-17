@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Prompt } from "../types";
-import { Copy, Check, ChevronDown, ExternalLink, Share2, Twitter, Facebook, Linkedin, Instagram, Link } from "lucide-react";
+import {
+  Copy,
+  Check,
+  ChevronDown,
+  ExternalLink,
+  Share2,
+  Twitter,
+  Facebook,
+  Linkedin,
+  Instagram,
+  Link,
+} from "lucide-react";
 import { getPlatformColor, getCategoryColor } from "../data/prompts";
 import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
@@ -15,9 +26,14 @@ import {
 interface PromptCardProps {
   prompt: Prompt;
   index: number;
+  promptUrl: string;
 }
 
-const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
+const PromptCard: React.FC<PromptCardProps> = ({
+  prompt,
+  index,
+  promptUrl,
+}) => {
   const [copied, setCopied] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -105,9 +121,9 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
     const promptUrl = `${window.location.origin}?prompt=${encodeURIComponent(
       safePrompt.id
     )}`;
-    
+
     const shareText = `Check out this ${safePrompt.platform} prompt: ${safePrompt.title}`;
-    
+
     switch (platform) {
       case "twitter":
         return `https://twitter.com/intent/tweet?text=${encodeURIComponent(
@@ -150,7 +166,8 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
   };
 
   const handleCardClick = () => {
-    setShowDialog(true);
+    // Navigate to the dedicated prompt page
+    window.location.href = promptUrl;
   };
 
   return (
@@ -160,11 +177,16 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: index * 0.05 }}
-        onClick={handleCardClick}
+        onClick={() => (window.location.href = promptUrl)}
+        itemScope
+        itemType="http://schema.org/CreativeWork"
       >
         {/* Title */}
         <div className="flex items-start justify-between mb-2">
-          <h3 className="text-base font-medium text-foreground group-hover:text-accent transition-colors duration-200 truncate">
+          <h3
+            className="text-base font-medium text-foreground group-hover:text-accent transition-colors duration-200 truncate"
+            itemProp="name"
+          >
             {safePrompt.title}
           </h3>
 
@@ -189,7 +211,10 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
         {/* Content */}
         <div className="relative mb-3 flex-grow">
           <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
-          <p className="text-muted-foreground text-xs mb-2 leading-relaxed max-h-16 overflow-hidden">
+          <p
+            className="text-muted-foreground text-xs mb-2 leading-relaxed max-h-16 overflow-hidden"
+            itemProp="description"
+          >
             {safePrompt.content}
           </p>
         </div>
@@ -315,7 +340,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
                   </>
                 )}
               </Button>
-              
+
               {/* Share Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
