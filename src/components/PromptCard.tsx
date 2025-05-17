@@ -26,14 +26,9 @@ import {
 interface PromptCardProps {
   prompt: Prompt;
   index: number;
-  promptUrl: string;
 }
 
-const PromptCard: React.FC<PromptCardProps> = ({
-  prompt,
-  index,
-  promptUrl,
-}) => {
+const PromptCard: React.FC<PromptCardProps> = ({ prompt, index }) => {
   const [copied, setCopied] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -166,8 +161,7 @@ const PromptCard: React.FC<PromptCardProps> = ({
   };
 
   const handleCardClick = () => {
-    // Navigate to the dedicated prompt page
-    window.location.href = promptUrl;
+    setShowDialog(true);
   };
 
   return (
@@ -177,16 +171,11 @@ const PromptCard: React.FC<PromptCardProps> = ({
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: index * 0.05 }}
-        onClick={() => (window.location.href = promptUrl)}
-        itemScope
-        itemType="http://schema.org/CreativeWork"
+        onClick={handleCardClick}
       >
         {/* Title */}
         <div className="flex items-start justify-between mb-2">
-          <h3
-            className="text-base font-medium text-foreground group-hover:text-accent transition-colors duration-200 truncate"
-            itemProp="name"
-          >
+          <h3 className="text-base font-medium text-foreground group-hover:text-accent transition-colors duration-200 truncate">
             {safePrompt.title}
           </h3>
 
@@ -211,10 +200,7 @@ const PromptCard: React.FC<PromptCardProps> = ({
         {/* Content */}
         <div className="relative mb-3 flex-grow">
           <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
-          <p
-            className="text-muted-foreground text-xs mb-2 leading-relaxed max-h-16 overflow-hidden"
-            itemProp="description"
-          >
+          <p className="text-muted-foreground text-xs mb-2 leading-relaxed max-h-16 overflow-hidden">
             {safePrompt.content}
           </p>
         </div>
